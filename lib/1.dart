@@ -47,24 +47,25 @@ class _HomeState extends State<Home> {
     "assets/images/Bob swan.jpg",
   ];
   List colors = [
-    Colors.indigo,
-    Colors.lightBlue.shade200,
-    Colors.indigo.shade200,
-    Colors.indigo,
-    Colors.lightBlue.shade200,
-    Colors.indigo.shade200,
-    Colors.indigo,
-    Colors.lightBlue.shade200,
-    Colors.indigo.shade200,
-    Colors.indigo
+    Color(0xff175375),
+    Color(0xff98C9F4),
+    Color(0xff1A3F74),
+    Color(0xff9DB3F6),
+    Color(0xff202C76),
+    Color(0xffA9A6F3),
+    Color(0xff332272),
+    Color(0xffBE9DF0),
+    Color(0xff451970),
+    Color(0xffCD95EE)
   ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(backgroundColor: Colors.blue.shade100,
+      child: Scaffold(
+        backgroundColor: Colors.blue.shade200,
         appBar: AppBar(
-          backgroundColor: Colors.blue.shade200,
+          backgroundColor: Color(0xffBFE6F6),
           title: Center(
             child: Text("CEO of MNC's", style: TextStyle(color: Colors.black)),
           ),
@@ -77,7 +78,7 @@ class _HomeState extends State<Home> {
               physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return wiget(
-                    images[index], name[index], Company[index], colors[index]);
+                    images[index], name[index], Company[index], colors[index],index%2==0?Colors.white:Colors.black);
               },
             )
           ],
@@ -86,10 +87,11 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget wiget(String images, String name, String compny, Color colors) {
+  Widget wiget(String images, String name, String compny, Color colors,Color co) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
+        textColor: co,
         leading: CircleAvatar(
           radius: 30,
           backgroundImage: AssetImage("$images"),
